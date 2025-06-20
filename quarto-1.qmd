@@ -1,5 +1,37 @@
 ---
-title: "Untitled"
+title: "Project1"
+author: Alfred Cheung
 format: html
+execute:
+    echo: false
+    warning: false
 ---
+
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(palmerpenguins)
+```
+
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1, linetype = "dashed") +
+  scale_color_brewer(palette = "Set2") +
+  labs(
+    title = "Penguin Bill Dimensions by Species",
+    subtitle = "Bill length vs. depth for three penguin species",
+    x = "Bill Length (mm)",
+    y = "Bill Depth (mm)",
+    color = "Species",
+    caption = "Data: palmerpenguins package"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 18),
+    plot.subtitle = element_text(size = 13),
+    legend.position = "right"
+  )
+```
 
